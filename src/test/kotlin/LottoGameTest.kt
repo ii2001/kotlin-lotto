@@ -29,13 +29,13 @@ class LottoGameTest {
     @Test
     fun `당첨금 계산 (보너스 당첨 and 미당첨)`() {
         assertThat(
-            Lotto(lottoNumberSetOf(1, 2, 3, 4, 5, 7)).findRanking(
-                WinningNumber(Lotto(lottoNumberSetOf(1, 2, 3, 4, 5, 6)), LottoNumber(45)),
+            WinningNumber(Lotto(lottoNumberSetOf(1, 2, 3, 4, 5, 6)), LottoNumber(45)).calculatePrize(
+                Lotto(lottoNumberSetOf(1, 2, 3, 4, 5, 7)),
             ),
         ).isEqualTo(LottoPrize.THIRD)
         assertThat(
-            Lotto(lottoNumberSetOf(1, 2, 3, 4, 5, 7)).findRanking(
-                WinningNumber(Lotto(lottoNumberSetOf(1, 2, 3, 4, 5, 6)), LottoNumber(7)),
+            WinningNumber(Lotto(lottoNumberSetOf(1, 2, 3, 4, 5, 6)), LottoNumber(7)).calculatePrize(
+                Lotto(lottoNumberSetOf(1, 2, 3, 4, 5, 7)),
             ),
         ).isEqualTo(LottoPrize.SECOND)
     }

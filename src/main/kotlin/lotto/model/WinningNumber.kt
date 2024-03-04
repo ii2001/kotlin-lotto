@@ -14,7 +14,9 @@ class WinningNumber(
         return lotto.numbers.intersect(targetLotto.numbers).size
     }
 
-    fun matchBonusNumber(targetLotto: Lotto): Boolean {
-        return targetLotto.numbers.contains(bonusNumber)
+    fun calculatePrize(lotto: Lotto): LottoPrize {
+        val matchCount = matchCount(lotto)
+        val matchBonus = bonusNumber in lotto.numbers
+        return LottoPrize.findRanking(matchCount, matchBonus)
     }
 }
