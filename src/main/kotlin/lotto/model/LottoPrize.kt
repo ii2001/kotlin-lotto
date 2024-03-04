@@ -3,7 +3,6 @@ package lotto.model
 enum class LottoPrize(
     val matchNumbers: Int,
     val price: Int,
-    val requiresBonus: Boolean = false,
 ) {
     BOOM(0, 0),
     FIFTH(3, 5_000),
@@ -22,7 +21,7 @@ enum class LottoPrize(
             if (matchCount == 5 && matchBonus) {
                 return SECOND
             }
-            return entries.find { it.matchNumbers == matchCount && (!it.requiresBonus || !matchBonus) } ?: BOOM
+            return entries.find { it.matchNumbers == matchCount && !matchBonus } ?: BOOM
         }
     }
 }
